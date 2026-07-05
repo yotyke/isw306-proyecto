@@ -21,8 +21,8 @@
       </div>
 
       <div class="header-user">
-        <span>Carlos E. Burgos</span>
-        <div class="avatar">CEB</div>
+        <span>Sofía Reyes</span>
+        <div class="avatar">SR</div>
       </div>
     </header>
 
@@ -38,7 +38,7 @@
 
     <main class="app-main">
       <div>
-        <h1 class="page-title">Hola, Carlos 👋</h1>
+        <h1 class="page-title">Hola, Sofía 👋</h1>
         <p class="page-subtitle">Este es el resumen de tus proyectos activos hoy, 5 de julio.</p>
       </div>
 
@@ -58,6 +58,10 @@
         <div class="stat-card">
           <div class="label">Progreso general</div>
           <div class="value">68%</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Usuarios registrados</div>
+          <div class="value accent" id="contador-usuarios">0</div>
         </div>
       </section>
 
@@ -116,6 +120,13 @@
         </aside>
 
       </div>
+
+      <section class="panel" aria-label="Usuarios registrados">
+        <h2>Usuarios registrados recientemente</h2>
+        <ul class="deadline-list" id="lista-usuarios">
+          <li class="deadline-item">Todavía no hay usuarios registrados.</li>
+        </ul>
+      </section>
     </main>
 
     <footer class="app-footer">
@@ -124,5 +135,6 @@
 
   </div>
 
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

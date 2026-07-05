@@ -404,3 +404,45 @@ img { max-width: 100%; display: block; }
   .stats-grid { grid-template-columns: 1fr; }
   .brand span.brand-text { display: none; }
 }
+
+/* =========================================================
+   Validación de formularios (Etapa 2)
+   ========================================================= */
+
+.field {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.field.full { grid-column: 1 / -1; }
+
+.error-msg {
+  min-height: 1.1rem;
+  font-size: 0.78rem;
+  color: #c0392b;
+}
+
+.field input.invalid,
+.field select.invalid {
+  border-color: #c0392b;
+  outline-color: #c0392b;
+}
+
+.field input.valid,
+.field select.valid {
+  border-color: #2f9e63;
+}
+
+.alert {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.alert-success {
+  background: rgba(47, 158, 99, 0.12);
+  color: #1f7a4d;
+  border: 1px solid rgba(47, 158, 99, 0.3);
+}
