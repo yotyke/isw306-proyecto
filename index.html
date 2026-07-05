@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Núcleo — Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark">N</span>
+        <span class="brand-text">Núcleo</span>
+      </div>
+
+      <div class="header-search">
+        <input type="search" placeholder="Buscar proyecto o tarea..." />
+      </div>
+
+      <div class="header-user">
+        <span>Carlos E. Burgos</span>
+        <div class="avatar">CEB</div>
+      </div>
+    </header>
+
+    <nav class="app-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">📊 Dashboard</a></li>
+        <li><a href="#">📁 Proyectos</a></li>
+        <li><a href="#">👥 Equipo</a></li>
+        <li><a href="registro.html">🆕 Crear cuenta</a></li>
+        <li><a href="#">⚙️ Configuración</a></li>
+      </ul>
+    </nav>
+
+    <main class="app-main">
+      <div>
+        <h1 class="page-title">Hola, Carlos 👋</h1>
+        <p class="page-subtitle">Este es el resumen de tus proyectos activos hoy, 5 de julio.</p>
+      </div>
+
+      <section class="stats-grid" aria-label="Resumen general">
+        <div class="stat-card">
+          <div class="label">Proyectos activos</div>
+          <div class="value">4</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Tareas pendientes</div>
+          <div class="value accent">12</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Commits esta semana</div>
+          <div class="value">37</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Progreso general</div>
+          <div class="value">68%</div>
+        </div>
+      </section>
+
+      <div class="content-split">
+
+        <section class="panel" aria-label="Proyectos en curso">
+          <h2>Proyectos en curso</h2>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">ISW-306 · Etapa 1: Maquetación</div>
+              <div class="project-meta">rama: etapa-1/maquetacion</div>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">App móvil — Inventario</div>
+              <div class="project-meta">rama: feature/scanner-qr</div>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 45%;"></div>
+            </div>
+          </div>
+
+          <div class="project-row">
+            <div>
+              <div class="project-name">Landing institucional</div>
+              <div class="project-meta">rama: main</div>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel" aria-label="Próximas entregas">
+          <h2>Próximas entregas</h2>
+          <ul class="deadline-list">
+            <li class="deadline-item">
+              <span class="deadline-date">08 JUL</span>
+              <span>Pull Request de la Etapa 1 abierto hacia <code>main</code>.</span>
+            </li>
+            <li class="deadline-item">
+              <span class="deadline-date">15 JUL</span>
+              <span>Inicio de la Etapa 2: Interactividad con JavaScript.</span>
+            </li>
+            <li class="deadline-item">
+              <span class="deadline-date">22 JUL</span>
+              <span>Revisión de accesibilidad y responsive en móvil.</span>
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Núcleo — Proyecto ISW-306. Hecho con HTML5 semántico y CSS.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
