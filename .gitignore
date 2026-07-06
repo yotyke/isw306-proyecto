@@ -1,0 +1,5 @@
+# Dependencias de Node.js (se regeneran con npm install)
+node_modules/
+
+# Base de datos local (cada quien genera la suya)
+backend/nucleo.db

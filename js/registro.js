@@ -1,7 +1,9 @@
 // =========================================================
 // Núcleo — Registro de usuarios
-// Etapa 2: Validaciones en tiempo real + LocalStorage
+// Etapa 3: Validaciones en tiempo real + conexión a la API (backend)
 // =========================================================
+
+const API_URL = "http://localhost:3000/api/usuarios";
 
 // --- Referencias a elementos del DOM ---
 const formulario = document.getElementById("formulario-registro");
@@ -152,26 +154,51 @@ formulario.addEventListener("submit", function (evento) {
     return;
   }
 
-  // --- Si todo es válido: guardamos el usuario en LocalStorage ---
+  // --- Si todo es válido: enviamos el usuario al backend (API real) ---
   const nuevoUsuario = {
     nombre: campoNombre.value.trim(),
     correo: campoCorreo.value.trim(),
     carrera: campoCarrera.value,
-    fechaRegistro: new Date().toLocaleDateString("es-DO"),
   };
-  // Nota: nunca se guarda la contraseña en LocalStorage por seguridad,
-  // ni siquiera en un proyecto de práctica — es una mala costumbre a evitar.
+  // Nota: nunca se envía ni se guarda la contraseña en texto plano en un
+  // proyecto real. Aquí, por simplicidad de la Etapa 3, no la enviamos.
 
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  usuarios.push(nuevoUsuario);
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  const boton = formulario.querySelector("button[type='submit']");
+  boton.disabled = true;
+  boton.textContent = "Creando cuenta...";
 
-  // Mostramos el mensaje de éxito y limpiamos el formulario
-  mensajeExito.hidden = false;
-  formulario.reset();
+  fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(nuevoUsuario),
+  })
+    .then(async (respuesta) => {
+      const datos = await respuesta.json();
 
-  // Quitamos las clases valid/invalid después de reiniciar el formulario
-  document
-    .querySelectorAll(".field input, .field select")
-    .forEach((el) => el.classList.remove("valid", "invalid"));
+      if (!respuesta.ok) {
+        // El servidor respondió con un error (ej. correo duplicado)
+        mostrarResultado(campoCorreo, "error-correo", datos.error || "Ocurrió un error.");
+        mensajeExito.hidden = true;
+        return;
+      }
+
+      // Todo salió bien: mostramos éxito y limpiamos el formulario
+      mensajeExito.hidden = false;
+      formulario.reset();
+
+      document
+        .querySelectorAll(".field input, .field select")
+        .forEach((el) => el.classList.remove("valid", "invalid"));
+    })
+    .catch(() => {
+      // Esto ocurre si el servidor no está corriendo (node server.js)
+      mensajeExito.hidden = true;
+      alert(
+        "No se pudo conectar con el servidor. Verifica que 'node server.js' esté corriendo."
+      );
+    })
+    .finally(() => {
+      boton.disabled = false;
+      boton.textContent = "Crear cuenta";
+    });
 });
